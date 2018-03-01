@@ -1,0 +1,34 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: itfan-zuul
+  zipkin:
+    base-url: http://localhost:8901
+eureka:
+  client:
+    service-url:
+      defaultZone: http://ralap:hjx969190@www.itfan01.top:8761/eureka/,http://ralap:hjx969190@www.itfan02.top:8762/eureka/
+  instance:
+    prefer-ip-address: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 6000
+  MaxAutoRetries: 2
+  MaxAutoRetriesNextServer: 0
+logging:
+  level:
+    org.springframework.web: debug
+    com.netflix: debug
+zuul:
+  retryable: true #开启请求重试
+management:
+  security:
+    enabled: false
